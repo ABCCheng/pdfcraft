@@ -1,0 +1,110 @@
+name: Deploy to Servers
+
+on:
+  push:
+    branches:
+      - main  
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  BUILD_OUTPUT_DIR: ./out
+  BUILD_ARTIFACT_NAME: pdfcraftbuild
+  BUILD_ARCHIVE_NAME: pdfcraftbuild.tar.gz
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 2
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24.14.1' 
+        cache: 'yarn'
+
+    # 3
+    - name: Install dependencies and build
+      run: |
+        yarn install --frozen-lockfile
+        yarn build
+
+    # 4
+    - name: Compress output directory
+      run: |
+        tar -czf "${BUILD_ARCHIVE_NAME}" -C "${BUILD_OUTPUT_DIR}" .
+
+    - name: Upload build archive as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.BUILD_ARTIFACT_NAME }}
+        path: ${{ env.BUILD_ARCHIVE_NAME }}
+  
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: build  
+
+    steps:
+    # 1
+    - name: Download build archive
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ env.BUILD_ARTIFACT_NAME }}
+        path: ./artifacts
+    
+    # 2
+    - name: Deploy to Servers
+      env:
+        SSH_SERVER_IP: ${{ secrets.SSH_SERVER_IP }}
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        deploy_to_server() {
+          SERVER_IP="$1"
+          SSH_PRIVATE_KEY="$2"
+          REMOTE_ROOT="/www/wwwroot"
+          ARCHIVE_NAME="${BUILD_ARCHIVE_NAME}"
+          RELEASE_DIR="${REMOTE_ROOT}/pdfcraft_new"
+          CURRENT_DIR="${REMOTE_ROOT}/pdfcraft"
+          BACKUP_DIR="${REMOTE_ROOT}/pdfcraft_backup_$(date +%Y%m%d%H%M%S)"
+          BACKUP_NAME="$(basename "${BACKUP_DIR}")"
+          
+          echo "$SSH_PRIVATE_KEY" > private_key
+          chmod 600 private_key
+          mkdir -p ~/.ssh
+          ssh-keyscan -H "${SERVER_IP}" >> ~/.ssh/known_hosts 2>/dev/null
+
+          echo "Preparing remote release directory..."
+          ssh -i private_key "${SSH_USERNAME}@${SERVER_IP}" "rm -rf '${RELEASE_DIR}' && mkdir -p '${RELEASE_DIR}'"
+
+          echo "Uploading compressed ${ARCHIVE_NAME} to server..."
+          scp -i private_key "./artifacts/${ARCHIVE_NAME}" "${SSH_USERNAME}@${SERVER_IP}:${REMOTE_ROOT}/"
+          echo "File upload completed successfully."
+
+          echo "Extracting the compressed file into the release directory..."
+          ssh -i private_key "${SSH_USERNAME}@${SERVER_IP}" "tar -xzf '${REMOTE_ROOT}/${ARCHIVE_NAME}' -C '${RELEASE_DIR}'"
+
+          echo "Switching release atomically..."
+          ssh -i private_key "${SSH_USERNAME}@${SERVER_IP}" "
+            set -e
+            rm -rf '${REMOTE_ROOT}'/pdfcraft_backup_* || true
+            if [ -d '${CURRENT_DIR}' ]; then
+              mv '${CURRENT_DIR}' '${BACKUP_DIR}'
+              tar -czf '${BACKUP_DIR}.tar.gz' -C '${REMOTE_ROOT}' '${BACKUP_NAME}'
+              rm -rf '${BACKUP_DIR}'
+            fi
+            mv '${RELEASE_DIR}' '${CURRENT_DIR}'
+            rm -f '${REMOTE_ROOT}/${ARCHIVE_NAME}'
+          "
+          echo "Extraction and deployment completed successfully."
+        }
+
+        echo "Deploy to Server ..."
+        deploy_to_server "${SSH_SERVER_IP}" "${SSH_PRIVATE_KEY}"
+        echo "Deploy to Server successfully."
