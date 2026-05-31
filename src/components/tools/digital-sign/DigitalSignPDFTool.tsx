@@ -342,6 +342,10 @@ export function DigitalSignPDFTool({ className = '' }: { className?: string }) {
                     <input
                       id="cert-password"
                       type={showPassword ? 'text' : 'password'}
+                      name="certificate-password"
+                      autoComplete="new-password"
+                      autoCapitalize="off"
+                      spellCheck={false}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       onKeyDown={(e) => e.key === 'Enter' && handlePasswordSubmit()}

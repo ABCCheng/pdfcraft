@@ -232,6 +232,10 @@ export function DecryptPDFTool({ className = '' }: DecryptPDFToolProps) {
                 <input
                   id="decrypt-password"
                   type={showPassword ? 'text' : 'password'}
+                  name="pdf-document-password"
+                  autoComplete="new-password"
+                  autoCapitalize="off"
+                  spellCheck={false}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={isProcessing}

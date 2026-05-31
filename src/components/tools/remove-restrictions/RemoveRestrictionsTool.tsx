@@ -256,6 +256,10 @@ export function RemoveRestrictionsTool({ className = '' }: RemoveRestrictionsToo
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
+                  name="pdf-owner-password"
+                  autoComplete="new-password"
+                  autoCapitalize="off"
+                  spellCheck={false}
                   value={ownerPassword}
                   onChange={(e) => setOwnerPassword(e.target.value)}
                   disabled={isProcessing}

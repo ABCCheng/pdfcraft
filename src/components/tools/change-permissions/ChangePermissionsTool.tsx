@@ -359,6 +359,10 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
               </label>
               <input
                 type="password"
+                name="pdf-current-password"
+                autoComplete="new-password"
+                autoCapitalize="off"
+                spellCheck={false}
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
                 placeholder={tTools('changePermissions.currentPasswordPlaceholder') || 'Enter current password'}
@@ -377,6 +381,10 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
               </label>
               <input
                 type="password"
+                name="pdf-user-password"
+                autoComplete="new-password"
+                autoCapitalize="off"
+                spellCheck={false}
                 value={newUserPassword}
                 onChange={(e) => setNewUserPassword(e.target.value)}
                 placeholder={tTools('changePermissions.newUserPasswordPlaceholder') || 'Enter user password'}
@@ -395,6 +403,10 @@ export function ChangePermissionsTool({ className = '' }: ChangePermissionsToolP
               </label>
               <input
                 type="password"
+                name="pdf-owner-password"
+                autoComplete="new-password"
+                autoCapitalize="off"
+                spellCheck={false}
                 value={newOwnerPassword}
                 onChange={(e) => setNewOwnerPassword(e.target.value)}
                 placeholder={tTools('changePermissions.newOwnerPasswordPlaceholder') || 'Enter owner password'}

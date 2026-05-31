@@ -236,6 +236,10 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                 <input
                   id="user-password"
                   type={showUserPassword ? 'text' : 'password'}
+                  name="pdf-user-password"
+                  autoComplete="new-password"
+                  autoCapitalize="off"
+                  spellCheck={false}
                   value={userPassword}
                   onChange={(e) => setUserPassword(e.target.value)}
                   disabled={isProcessing}
@@ -266,6 +270,10 @@ export function EncryptPDFTool({ className = '' }: EncryptPDFToolProps) {
                 <input
                   id="owner-password"
                   type={showOwnerPassword ? 'text' : 'password'}
+                  name="pdf-owner-password"
+                  autoComplete="new-password"
+                  autoCapitalize="off"
+                  spellCheck={false}
                   value={ownerPassword}
                   onChange={(e) => setOwnerPassword(e.target.value)}
                   disabled={isProcessing}
