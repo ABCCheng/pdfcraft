@@ -152,7 +152,7 @@ export async function generateMetadata({ params }: ToolPageParams): Promise<Meta
     tool,
     content,
     locale,
-    path: `/tools/${toolSlug}`,
+    path: `/${toolSlug}`,
   });
 }
 
@@ -193,8 +193,7 @@ export default async function ToolPageRoute({ params }: ToolPageParams) {
   const breadcrumbStructuredData = generateBreadcrumbSchema(
     [
       { name: 'Home', path: '' },
-      { name: 'Tools', path: '/tools' },
-      { name: content.title, path: `/tools/${tool.slug}` },
+      { name: content.title, path: `/${tool.slug}` },
     ],
     locale
   );

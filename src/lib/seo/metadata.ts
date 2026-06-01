@@ -160,7 +160,7 @@ export function generateBaseMetadata(options: PageMetadataOptions): Metadata {
  */
 export function generateToolMetadata(options: ToolMetadataOptions): Metadata {
   const { locale, tool, content } = options;
-  const path = `/tools/${tool.slug}`;
+  const path = `/${tool.slug}`;
 
   // Enhance keywords with common PDF-related terms
   const enhancedKeywords = [
@@ -195,19 +195,6 @@ export function generateHomeMetadata(locale: Locale, translations?: { title: str
     title: translations?.title || defaultTitle,
     description: translations?.description || defaultDescription,
     keywords: ['PDF tools', 'merge PDF', 'split PDF', 'compress PDF', 'convert PDF', 'free PDF tools', 'online PDF editor'],
-  });
-}
-
-/**
- * Generate metadata for the tools listing page
- */
-export function generateToolsListMetadata(locale: Locale, translations?: { title: string; description: string }): Metadata {
-  return generateBaseMetadata({
-    locale,
-    path: '/tools',
-    title: translations?.title || 'All PDF Tools',
-    description: translations?.description || 'Browse all 99+ professional PDF tools. Merge, split, compress, convert, edit, and secure your PDF files for free.',
-    keywords: ['PDF tools', 'all PDF tools', 'PDF editor', 'PDF converter', 'PDF merger', 'PDF splitter'],
   });
 }
 

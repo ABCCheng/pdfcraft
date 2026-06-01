@@ -27,19 +27,19 @@ export const Navigation: React.FC<NavigationProps> = ({ locale, currentPath }) =
   const menuItemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   const categories: CategoryItem[] = [
-    { id: 'edit-annotate', labelKey: 'editAnnotate', href: `/${locale}/tools?category=edit-annotate` },
-    { id: 'convert-to-pdf', labelKey: 'convertToPdf', href: `/${locale}/tools?category=convert-to-pdf` },
-    { id: 'convert-from-pdf', labelKey: 'convertFromPdf', href: `/${locale}/tools?category=convert-from-pdf` },
-    { id: 'organize-manage', labelKey: 'organizeManage', href: `/${locale}/tools?category=organize-manage` },
-    { id: 'optimize-repair', labelKey: 'optimizeRepair', href: `/${locale}/tools?category=optimize-repair` },
-    { id: 'secure-pdf', labelKey: 'securePdf', href: `/${locale}/tools?category=secure-pdf` },
+    { id: 'edit-annotate', labelKey: 'editAnnotate', href: `/${locale}?category=edit-annotate` },
+    { id: 'convert-to-pdf', labelKey: 'convertToPdf', href: `/${locale}?category=convert-to-pdf` },
+    { id: 'convert-from-pdf', labelKey: 'convertFromPdf', href: `/${locale}?category=convert-from-pdf` },
+    { id: 'organize-manage', labelKey: 'organizeManage', href: `/${locale}?category=organize-manage` },
+    { id: 'optimize-repair', labelKey: 'optimizeRepair', href: `/${locale}?category=optimize-repair` },
+    { id: 'secure-pdf', labelKey: 'securePdf', href: `/${locale}?category=secure-pdf` },
   ];
 
   const mainNavItems = [
-    { href: `/${locale}`, label: tCommon('navigation.home') },
-    { href: `/${locale}/tools`, label: tCommon('navigation.tools'), hasDropdown: true },
-    { href: `/${locale}/about`, label: tCommon('navigation.about') },
-    { href: `/${locale}/faq`, label: tCommon('navigation.faq') },
+    { id: 'home', href: `/${locale}`, label: tCommon('navigation.home') },
+    { id: 'tools', href: `/${locale}`, label: tCommon('navigation.tools'), hasDropdown: true },
+    { id: 'about', href: `/${locale}/about`, label: tCommon('navigation.about') },
+    { id: 'faq', href: `/${locale}/faq`, label: tCommon('navigation.faq') },
   ];
 
   // Close dropdown when clicking outside
@@ -144,7 +144,7 @@ export const Navigation: React.FC<NavigationProps> = ({ locale, currentPath }) =
       ref={dropdownRef}
     >
       {mainNavItems.map((item) => (
-        <div key={item.href} className="relative">
+        <div key={item.id} className="relative">
           {item.hasDropdown ? (
             <>
               <button

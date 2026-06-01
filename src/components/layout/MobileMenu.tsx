@@ -44,21 +44,21 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, locale 
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const categories: CategoryItem[] = [
-    { id: 'edit-annotate', labelKey: 'editAnnotate', href: `/${locale}/tools?category=edit-annotate` },
-    { id: 'convert-to-pdf', labelKey: 'convertToPdf', href: `/${locale}/tools?category=convert-to-pdf` },
-    { id: 'convert-from-pdf', labelKey: 'convertFromPdf', href: `/${locale}/tools?category=convert-from-pdf` },
-    { id: 'organize-manage', labelKey: 'organizeManage', href: `/${locale}/tools?category=organize-manage` },
-    { id: 'optimize-repair', labelKey: 'optimizeRepair', href: `/${locale}/tools?category=optimize-repair` },
-    { id: 'secure-pdf', labelKey: 'securePdf', href: `/${locale}/tools?category=secure-pdf` },
+    { id: 'edit-annotate', labelKey: 'editAnnotate', href: `/${locale}?category=edit-annotate` },
+    { id: 'convert-to-pdf', labelKey: 'convertToPdf', href: `/${locale}?category=convert-to-pdf` },
+    { id: 'convert-from-pdf', labelKey: 'convertFromPdf', href: `/${locale}?category=convert-from-pdf` },
+    { id: 'organize-manage', labelKey: 'organizeManage', href: `/${locale}?category=organize-manage` },
+    { id: 'optimize-repair', labelKey: 'optimizeRepair', href: `/${locale}?category=optimize-repair` },
+    { id: 'secure-pdf', labelKey: 'securePdf', href: `/${locale}?category=secure-pdf` },
   ];
 
   const mainNavItems = [
-    { href: `/${locale}`, label: tCommon('navigation.home') },
-    { href: `/${locale}/tools`, label: tCommon('navigation.tools'), hasSubmenu: true },
-    { href: `/${locale}/about`, label: tCommon('navigation.about') },
-    { href: `/${locale}/faq`, label: tCommon('navigation.faq') },
-    { href: `/${locale}/privacy`, label: tCommon('navigation.privacy') },
-    { href: `/${locale}/contact`, label: tCommon('navigation.contact') },
+    { id: 'home', href: `/${locale}`, label: tCommon('navigation.home') },
+    { id: 'tools', href: `/${locale}`, label: tCommon('navigation.tools'), hasSubmenu: true },
+    { id: 'about', href: `/${locale}/about`, label: tCommon('navigation.about') },
+    { id: 'faq', href: `/${locale}/faq`, label: tCommon('navigation.faq') },
+    { id: 'privacy', href: `/${locale}/privacy`, label: tCommon('navigation.privacy') },
+    { id: 'contact', href: `/${locale}/contact`, label: tCommon('navigation.contact') },
   ];
 
   // Focus trap and escape key handling
@@ -196,7 +196,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, locale 
         <nav className="p-4 overflow-y-auto h-[calc(100%-64px)]" aria-label="Mobile navigation">
           <ul className="flex flex-col gap-1">
             {mainNavItems.map((item) => (
-              <li key={item.href}>
+              <li key={item.id}>
                 {item.hasSubmenu ? (
                   <div>
                     <button

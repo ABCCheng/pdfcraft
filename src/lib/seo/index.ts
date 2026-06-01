@@ -9,7 +9,6 @@ export {
   generateBaseMetadata,
   generateToolMetadata,
   generateHomeMetadata,
-  generateToolsListMetadata,
   generateAboutMetadata,
   generateFaqMetadata,
   generatePrivacyMetadata,
