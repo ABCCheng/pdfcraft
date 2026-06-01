@@ -87,7 +87,7 @@ describe('Tool Component Property Tests', () => {
             const { unmount } = render(<ToolCard tool={tool} locale={locale} />);
             
             const linkElement = screen.getByTestId('tool-card');
-            const expectedUrl = `/${locale}/tools/${tool.slug}`;
+            const expectedUrl = `/${locale}/${tool.slug}`;
             
             expect(linkElement).toHaveAttribute('href', expectedUrl);
             

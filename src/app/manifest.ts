@@ -35,19 +35,19 @@ export default function manifest(): MetadataRoute.Manifest {
         name: 'Merge PDF',
         short_name: 'Merge',
         description: 'Combine multiple PDF files',
-        url: '/en/tools/merge-pdf',
+        url: '/en/merge-pdf',
       },
       {
         name: 'Split PDF',
         short_name: 'Split',
         description: 'Split PDF into multiple files',
-        url: '/en/tools/split-pdf',
+        url: '/en/split-pdf',
       },
       {
         name: 'Compress PDF',
         short_name: 'Compress',
         description: 'Reduce PDF file size',
-        url: '/en/tools/compress-pdf',
+        url: '/en/compress-pdf',
       },
     ],
   };

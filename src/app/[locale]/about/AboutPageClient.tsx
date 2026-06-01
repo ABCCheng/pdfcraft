@@ -192,7 +192,7 @@ export default function AboutPageClient({ locale }: AboutPageClientProps) {
               <p className="text-[hsl(var(--color-muted-foreground))] mb-8">
                 {t('cta.description', { brand: tCommon('brand'), count: allTools.length })}
               </p>
-              <Link href={`/${locale}/tools`}>
+              <Link href={`/${locale}`}>
                 <Button variant="primary" size="lg">
                   {t('cta.button')}
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -207,4 +207,3 @@ export default function AboutPageClient({ locale }: AboutPageClientProps) {
     </div>
   );
 }
-

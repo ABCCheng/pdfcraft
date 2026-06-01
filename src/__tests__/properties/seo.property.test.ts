@@ -9,7 +9,6 @@ import {
   generateBaseMetadata,
   generateToolMetadata,
   generateHomeMetadata,
-  generateToolsListMetadata,
   generateAboutMetadata,
   generateFaqMetadata,
   generatePrivacyMetadata,
@@ -82,11 +81,6 @@ describe('SEO Property Tests', () => {
             expect(homeValidation.valid).toBe(true);
             expect(homeValidation.missingFields).toHaveLength(0);
             
-            // Test tools list metadata
-            const toolsMetadata = generateToolsListMetadata(locale);
-            const toolsValidation = validateMetadata(toolsMetadata);
-            expect(toolsValidation.valid).toBe(true);
-            
             // Test about page metadata
             const aboutMetadata = generateAboutMetadata(locale);
             const aboutValidation = validateMetadata(aboutMetadata);
@@ -145,7 +139,7 @@ describe('SEO Property Tests', () => {
       fc.assert(
         fc.property(
           fc.constantFrom(...locales),
-          fc.constantFrom('/tools/merge-pdf', '/about', '/faq', ''),
+          fc.constantFrom('/merge-pdf', '/about', '/faq', ''),
           (locale, path) => {
             const metadata = generateBaseMetadata({
               locale,
@@ -328,7 +322,7 @@ describe('SEO Property Tests', () => {
             expect(schema.url).toContain(`/${locale}/`);
             
             // URL should contain the tool slug
-            expect(schema.url).toContain(`/tools/${tool.slug}`);
+            expect(schema.url).toContain(`/${tool.slug}`);
             
             // URL should be a valid URL format
             expect(schema.url).toMatch(/^https?:\/\//);
@@ -349,7 +343,7 @@ describe('SEO Property Tests', () => {
       fc.assert(
         fc.property(
           fc.constantFrom(...locales),
-          fc.constantFrom('/tools/merge-pdf', '/about', '/faq', ''),
+          fc.constantFrom('/merge-pdf', '/about', '/faq', ''),
           (locale, path) => {
             const url = getCanonicalUrl(locale, path);
             
@@ -368,7 +362,7 @@ describe('SEO Property Tests', () => {
     });
 
     it('getAlternateUrls includes all locales', () => {
-      const path = '/tools/merge-pdf';
+      const path = '/merge-pdf';
       const alternates = getAlternateUrls(path);
       
       // All locales should be present

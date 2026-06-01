@@ -172,7 +172,7 @@ export function generateSoftwareApplicationSchema(
     '@type': 'SoftwareApplication',
     name: content.title,
     description: content.metaDescription,
-    url: getCanonicalUrl(locale, `/tools/${tool.slug}`),
+    url: getCanonicalUrl(locale, `/${tool.slug}`),
     applicationCategory: 'UtilitiesApplication',
     operatingSystem: 'Web Browser',
     browserRequirements: 'Requires JavaScript and a modern web browser',
@@ -232,7 +232,7 @@ export function generateHowToSchema(
       position: step.step,
       name: step.title,
       text: step.description,
-      url: `${getCanonicalUrl(locale, `/tools/${tool.slug}`)}#step-${step.step}`,
+      url: `${getCanonicalUrl(locale, `/${tool.slug}`)}#step-${step.step}`,
     })),
   };
 }
@@ -263,7 +263,7 @@ export function generateWebPageSchema(
     '@type': 'WebPage',
     name: content.title,
     description: content.metaDescription,
-    url: getCanonicalUrl(locale, `/tools/${tool.slug}`),
+    url: getCanonicalUrl(locale, `/${tool.slug}`),
     inLanguage: languageMap[locale] || 'en-US',
     isPartOf: {
       '@type': 'WebSite',
@@ -313,7 +313,7 @@ export function generateWebSiteSchema(locale: Locale): WebSiteSchema {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${getCanonicalUrl(locale, '/tools')}?q={search_term_string}`,
+        urlTemplate: `${getCanonicalUrl(locale)}?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },
@@ -379,8 +379,7 @@ export function generateToolPageStructuredData(
   const breadcrumb = generateBreadcrumbSchema(
     [
       { name: 'Home', path: '' },
-      { name: 'Tools', path: '/tools' },
-      { name: content.title, path: `/tools/${tool.slug}` },
+      { name: content.title, path: `/${tool.slug}` },
     ],
     locale
   );

@@ -9,7 +9,6 @@ import { MetadataRoute } from 'next';
 import { siteConfig } from '@/config/site';
 import { locales, type Locale } from '@/lib/i18n/config';
 import { getAllTools } from '@/config/tools';
-import { TOOL_CATEGORIES } from '@/types/tool';
 import { getBasePath } from '@/lib/utils/path';
 
 // Required for static export
@@ -20,9 +19,7 @@ export const dynamic = 'force-static';
  */
 const PRIORITY = {
   home: 1.0,
-  tools: 0.9,
   toolPage: 0.8,
-  category: 0.7,
   static: 0.6,
 } as const;
 
@@ -31,9 +28,7 @@ const PRIORITY = {
  */
 const CHANGE_FREQUENCY = {
   home: 'daily',
-  tools: 'weekly',
   toolPage: 'weekly',
-  category: 'weekly',
   static: 'monthly',
 } as const;
 
@@ -42,7 +37,6 @@ const CHANGE_FREQUENCY = {
  */
 const STATIC_PAGES = [
   { path: '', priority: PRIORITY.home, changeFrequency: CHANGE_FREQUENCY.home },
-  { path: '/tools', priority: PRIORITY.tools, changeFrequency: CHANGE_FREQUENCY.tools },
   { path: '/about', priority: PRIORITY.static, changeFrequency: CHANGE_FREQUENCY.static },
   { path: '/faq', priority: PRIORITY.static, changeFrequency: CHANGE_FREQUENCY.static },
   { path: '/privacy', priority: PRIORITY.static, changeFrequency: CHANGE_FREQUENCY.static },
@@ -89,23 +83,10 @@ function generateLocaleEntries(locale: Locale, lastModified: Date): MetadataRout
     });
   }
 
-  for (const category of TOOL_CATEGORIES) {
-    const path = `/tools/category/${category}`;
-    entries.push({
-      url: buildSitemapUrl(locale, path),
-      lastModified,
-      changeFrequency: CHANGE_FREQUENCY.category,
-      priority: PRIORITY.category,
-      alternates: {
-        languages: getSitemapAlternates(path),
-      },
-    });
-  }
-  
   // Add tool pages
   const tools = getAllTools();
   for (const tool of tools) {
-    const path = `/tools/${tool.slug}`;
+    const path = `/${tool.slug}`;
     entries.push({
       url: buildSitemapUrl(locale, path),
       lastModified,
@@ -142,7 +123,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
  */
 export function getSitemapUrlCount(): number {
   const tools = getAllTools();
-  const staticPagesCount = STATIC_PAGES.length + TOOL_CATEGORIES.length;
+  const staticPagesCount = STATIC_PAGES.length;
   const toolPagesCount = tools.length;
   const localesCount = locales.length;
   
