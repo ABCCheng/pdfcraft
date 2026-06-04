@@ -7,11 +7,13 @@ import type { ProcessInput, ProcessOutput, ProgressCallback } from '@/types/pdf'
 import { PDFErrorCode } from '@/types/pdf';
 import { BasePDFProcessor } from '../processor';
 import { loadPdfLib, configurePdfjsWorker } from '../loader';
+import { analyzePageBlankness, normalizeBlankPageThreshold } from '../blank-page-detection';
 
 export interface RemoveBlankPagesOptions {
-  threshold?: number; // 0-100, percentage of white pixels to consider blank
+  threshold?: number; // 0-1 content tolerance; legacy 90-100 white-pixel thresholds are also accepted
   checkMargins?: boolean;
   marginSize?: number;
+  pagesToRemove?: number[];
 }
 
 export class RemoveBlankPagesProcessor extends BasePDFProcessor {
@@ -21,7 +23,7 @@ export class RemoveBlankPagesProcessor extends BasePDFProcessor {
 
     const { files, options } = input;
     const removeOptions: RemoveBlankPagesOptions = {
-      threshold: 99,
+      threshold: 0.1,
       checkMargins: true,
       marginSize: 20,
       ...options as RemoveBlankPagesOptions,
@@ -34,51 +36,66 @@ export class RemoveBlankPagesProcessor extends BasePDFProcessor {
     try {
       this.updateProgress(5, 'Loading libraries...');
       const pdfLib = await loadPdfLib();
-      const pdfjsLib = await import('pdfjs-dist');
-      configurePdfjsWorker(pdfjsLib);
 
       this.updateProgress(15, 'Loading PDF...');
       const file = files[0];
       const arrayBuffer = await file.arrayBuffer();
+      const sourcePdf = await pdfLib.PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
+      const totalPages = sourcePdf.getPageCount();
+      let blankPages: number[] = [];
 
-      // Load with pdfjs for rendering
-      const pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer.slice(0) }).promise;
-      const totalPages = pdfDoc.numPages;
+      if (removeOptions.pagesToRemove) {
+        blankPages = Array.from(new Set(removeOptions.pagesToRemove))
+          .filter(page => Number.isInteger(page) && page >= 1 && page <= totalPages)
+          .sort((a, b) => a - b);
+      } else {
+        const pdfjsLib = await import('pdfjs-dist');
+        configurePdfjsWorker(pdfjsLib);
 
-      this.updateProgress(25, 'Analyzing pages...');
+        // Load with pdfjs for rendering
+        const pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer.slice(0) }).promise;
 
-      const blankPages: number[] = [];
-      const threshold = removeOptions.threshold || 99;
+        this.updateProgress(25, 'Analyzing pages...');
 
-      for (let i = 1; i <= totalPages; i++) {
-        if (this.checkCancelled()) {
-          return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
-        }
+        const threshold = normalizeBlankPageThreshold(removeOptions.threshold);
 
-        const page = await pdfDoc.getPage(i);
-        const viewport = page.getViewport({ scale: 0.5 });
-
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-
-        if (context) {
-          canvas.width = viewport.width;
-          canvas.height = viewport.height;
-
-          await page.render({
-            canvasContext: context,
-            viewport: viewport,
-          }).promise;
-
-          const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-          const isBlank = this.isPageBlank(imageData, threshold);
-
-          if (isBlank) {
-            blankPages.push(i);
+        for (let i = 1; i <= totalPages; i++) {
+          if (this.checkCancelled()) {
+            return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
           }
-        }
 
-        this.updateProgress(25 + (40 * i / totalPages), `Analyzing page ${i}...`);
+          const page = await pdfDoc.getPage(i);
+          const viewport = page.getViewport({ scale: 0.5 });
+
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+
+          if (context) {
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            context.fillStyle = '#fff';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            await page.render({
+              canvasContext: context,
+              background: 'white',
+              viewport: viewport,
+            }).promise;
+
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            const analysis = analyzePageBlankness(imageData, {
+              threshold,
+              checkMargins: removeOptions.checkMargins,
+              marginSize: removeOptions.marginSize,
+            });
+
+            if (analysis.isBlank) {
+              blankPages.push(i);
+            }
+          }
+
+          this.updateProgress(25 + (40 * i / totalPages), `Analyzing page ${i}...`);
+        }
       }
 
       if (blankPages.length === 0) {
@@ -97,8 +114,6 @@ export class RemoveBlankPagesProcessor extends BasePDFProcessor {
 
       this.updateProgress(70, 'Removing blank pages...');
 
-      // Load with pdf-lib for manipulation
-      const sourcePdf = await pdfLib.PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
       const newPdf = await pdfLib.PDFDocument.create();
 
       const pagesToKeep = Array.from({ length: totalPages }, (_, i) => i)
@@ -122,26 +137,6 @@ export class RemoveBlankPagesProcessor extends BasePDFProcessor {
     } catch (error) {
       return this.createErrorOutput(PDFErrorCode.PROCESSING_FAILED, 'Failed to remove blank pages.', error instanceof Error ? error.message : 'Unknown error');
     }
-  }
-
-  private isPageBlank(imageData: ImageData, threshold: number): boolean {
-    const data = imageData.data;
-    let whitePixels = 0;
-    const totalPixels = data.length / 4;
-
-    for (let i = 0; i < data.length; i += 4) {
-      const r = data[i];
-      const g = data[i + 1];
-      const b = data[i + 2];
-
-      // Check if pixel is close to white (allowing some tolerance)
-      if (r > 250 && g > 250 && b > 250) {
-        whitePixels++;
-      }
-    }
-
-    const whitePercentage = (whitePixels / totalPixels) * 100;
-    return whitePercentage >= threshold;
   }
 
   protected getAcceptedTypes(): string[] {
