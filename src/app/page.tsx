@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 import ToolsPageClient from './[locale]/tools/ToolsPageClient';
 import { tools } from '@/config/tools';
 import { getToolContent } from '@/config/tool-content';
@@ -58,6 +59,8 @@ function HomePageFallback() {
 }
 
 export default function RootPage() {
+  setRequestLocale(locale);
+
   const localizedToolContent = tools.reduce((acc, tool) => {
     const content = getToolContent(locale, tool.id);
     if (content) {
