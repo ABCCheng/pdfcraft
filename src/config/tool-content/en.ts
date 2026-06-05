@@ -619,32 +619,6 @@ export const toolContentEn: Record<string, ToolContent> = {
     ],
   },
 
-  'form-filler': {
-    title: 'Form Filler',
-    metaDescription: 'Fill PDF forms online. Complete interactive PDF forms without printing.',
-    keywords: ['fill pdf form', 'pdf form filler', 'complete pdf form', 'interactive pdf'],
-    description: `
-      <p>Form Filler allows you to complete interactive PDF forms directly in your browser. Fill text fields, check boxes, select options, and add signatures without printing the document.</p>
-      <p>The tool supports standard PDF forms and XFA forms. Your filled data can be saved and the form can be flattened to prevent further editing.</p>
-      <p>All processing happens locally in your browser, ensuring your form data remains private.</p>
-    `,
-    howToUse: [
-      { step: 1, title: 'Upload Your PDF Form', description: 'Drag and drop your PDF form or click to select the file.' },
-      { step: 2, title: 'Fill the Form', description: 'Click on form fields to enter text, check boxes, or select options.' },
-      { step: 3, title: 'Save and Download', description: 'Click Save to preserve your entries and download the filled form.' },
-    ],
-    useCases: [
-      { title: 'Application Forms', description: 'Complete job applications, permit applications, and registration forms.', icon: 'clipboard' },
-      { title: 'Tax Forms', description: 'Fill out tax documents and financial forms electronically.', icon: 'file-text' },
-      { title: 'Contracts', description: 'Complete contract forms with your information before signing.', icon: 'file-signature' },
-    ],
-    faq: [
-      { question: 'Can I save my progress?', answer: 'Yes, you can save partially filled forms and continue later.' },
-      { question: 'What is form flattening?', answer: 'Flattening converts form fields to static content, preventing further editing.' },
-      { question: 'Are XFA forms supported?', answer: 'Yes, the tool supports both standard AcroForms and XFA forms.' },
-    ],
-  },
-
   'form-creator': {
     title: 'Form Creator',
     metaDescription: 'Create fillable PDF forms. Add text fields, checkboxes, and dropdowns to documents.',

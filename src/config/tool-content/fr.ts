@@ -592,32 +592,6 @@ export const toolContentFr: Record<string, ToolContent> = {
     ],
   },
 
-  'form-filler': {
-    title: 'Remplir un formulaire',
-    metaDescription: 'Remplissez des formulaires PDF en ligne. Complétez des formulaires PDF interactifs sans imprimer.',
-    keywords: ['remplir formulaire pdf', 'remplisseur pdf', 'compléter pdf', 'pdf interactif'],
-    description: `
-      <p>Remplir un formulaire vous permet de compléter des formulaires PDF interactifs directement dans votre navigateur. Remplissez des champs de texte, cochez des cases, sélectionnez des options et ajoutez des signatures sans imprimer le document.</p>
-      <p>L'outil prend en charge les formulaires PDF standard et les formulaires XFA. Vos données remplies peuvent être enregistrées et le formulaire peut être aplati pour empêcher toute modification ultérieure.</p>
-      <p>Tout le traitement s'effectue localement dans votre navigateur, garantissant que les données de votre formulaire restent privées.</p>
-    `,
-    howToUse: [
-      { step: 1, title: 'Téléchargez votre formulaire PDF', description: 'Glissez-déposez votre formulaire PDF ou cliquez pour sélectionner le fichier.' },
-      { step: 2, title: 'Remplissez le formulaire', description: 'Cliquez sur les champs du formulaire pour saisir du texte, cocher des cases ou sélectionner des options.' },
-      { step: 3, title: 'Sauvegardez et téléchargez', description: 'Cliquez sur Sauvegarder pour préserver vos entrées et téléchargez le formulaire rempli.' },
-    ],
-    useCases: [
-      { title: 'Formulaires de candidature', description: 'Complétez des candidatures d\'emploi, des demandes de permis et des formulaires d\'inscription.', icon: 'clipboard' },
-      { title: 'Formulaires fiscaux', description: 'Remplissez des documents fiscaux et des formulaires financiers électroniquement.', icon: 'file-text' },
-      { title: 'Contrats', description: 'Complétez des formulaires de contrat avec vos informations avant de signer.', icon: 'file-signature' },
-    ],
-    faq: [
-      { question: 'Puis-je enregistrer ma progression ?', answer: 'Oui, vous pouvez enregistrer des formulaires partiellement remplis et continuer plus tard.' },
-      { question: 'Qu\'est-ce que l\'aplatissement de formulaire ?', answer: 'L\'aplatissement convertit les champs de formulaire en contenu statique, empêchant toute modification ultérieure.' },
-      { question: 'Les formulaires XFA sont-ils pris en charge ?', answer: 'Oui, l\'outil prend en charge à la fois les AcroForms standard et les formulaires XFA.' },
-    ],
-  },
-
   'form-creator': {
     title: 'Créateur de formulaire',
     metaDescription: 'Créez des formulaires PDF remplissables. Ajoutez des champs de texte, des cases à cocher et des listes déroulantes.',

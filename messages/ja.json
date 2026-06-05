@@ -1699,12 +1699,6 @@
       "removeHighlights": "ハイライトを削除",
       "removeLinks": "リンクを削除"
     },
-    "formFiller": {
-      "uploadLabel": "PDFファイルをアップロードする",
-      "uploadDescription": "PDF フォームをドラッグ アンド ドロップします。",
-      "saveButton": "フォームを保存",
-      "successMessage": "フォームが正常に保存されました。"
-    },
     "formCreator": {
       "uploadLabel": "PDFファイルをアップロード",
       "uploadDescription": "PDFファイルをここにドラッグ＆ドロップしてください。",

@@ -483,28 +483,6 @@ export const toolContentKo: Record<string, ToolContent> = {
     ],
   },
 
-  'form-filler': {
-    title: '양식 작성',
-    metaDescription: '온라인으로 PDF 양식 작성. 인쇄 없이 대화형 PDF 양식 완성.',
-    keywords: ['pdf 양식 작성', 'pdf 양식 필러', 'pdf 양식 완성'],
-    description: `<p>브라우저에서 직접 대화형 PDF 양식을 작성할 수 있습니다.</p>`,
-    howToUse: [
-      { step: 1, title: 'PDF 양식 업로드', description: 'PDF 양식을 드래그 앤 드롭하거나 클릭하여 선택합니다.' },
-      { step: 2, title: '양식 작성', description: '양식 필드를 클릭하여 텍스트를 입력하고 체크박스를 선택합니다.' },
-      { step: 3, title: '저장 및 다운로드', description: '저장을 클릭하여 작성된 양식을 다운로드합니다.' },
-    ],
-    useCases: [
-      { title: '신청서 양식', description: '취업 신청서, 허가 신청서, 등록 양식을 완성합니다.', icon: 'clipboard' },
-      { title: '세금 양식', description: '세금 문서와 재무 양식을 전자적으로 작성합니다.', icon: 'file-text' },
-      { title: '계약서', description: '서명 전에 계약서 양식에 정보를 입력합니다.', icon: 'file-signature' },
-    ],
-    faq: [
-      { question: '진행 상황을 저장할 수 있나요?', answer: '예, 부분적으로 작성된 양식을 저장하고 나중에 계속할 수 있습니다.' },
-      { question: '양식 평면화란 무엇인가요?', answer: '평면화는 양식 필드를 정적 콘텐츠로 변환하여 추가 편집을 방지합니다.' },
-      { question: 'XFA 양식이 지원되나요?', answer: '예, 표준 AcroForms와 XFA 양식 모두 지원됩니다.' },
-    ],
-  },
-
   'form-creator': {
     title: '양식 생성',
     metaDescription: '작성 가능한 PDF 양식 생성. 문서에 텍스트 필드, 체크박스, 드롭다운 추가.',

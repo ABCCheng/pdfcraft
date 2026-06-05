@@ -6,7 +6,7 @@
     },
     "tools": {
       "title": "所有 PDF 工具",
-      "description": "浏览 99+ 款专业 PDF 工具。免费合并、拆分、压缩、转换、编辑和保护您的 PDF 文件。"
+      "description": "浏览 90+ 款专业 PDF 工具。免费合并、拆分、压缩、转换、编辑和保护您的 PDF 文件。"
     },
     "about": {
       "title": "关于我们",
@@ -200,7 +200,7 @@
       "general": {
         "whatIs": {
           "question": "PDFCraft 是什么？",
-          "answer": "PDFCraft 是一个免费、注重隐私的 PDF 工具包，完全在您的浏览器中运行。它提供 99+ 个专业工具，用于编辑、转换、合并、分割和加密 PDF 文件，而无需将其上传到任何服务器。"
+          "answer": "PDFCraft 是一个免费、注重隐私的 PDF 工具包，完全在您的浏览器中运行。它提供 90+ 个专业工具，用于编辑、转换、合并、分割和加密 PDF 文件，而无需将其上传到任何服务器。"
         },
         "isFree": {
           "question": "PDFCraft 真的免费吗？",
@@ -228,7 +228,7 @@
       "features": {
         "operations": {
           "question": "我可以执行哪些 PDF 操作？",
-          "answer": "PDFCraft 提供 99+ 个工具，包括：合并、分割、压缩、转换（转为/来自图像、文本、JSON）、编辑、注释、签名、添加水印、加密/解密、OCR 等等。"
+          "answer": "PDFCraft 提供 90+ 个工具，包括：合并、分割、压缩、转换（转为/来自图像、文本、JSON）、编辑、注释、签名、添加水印、加密/解密、OCR 等等。"
         },
         "merge": {
           "question": "我可以合并多个 PDF 文件吗？",
@@ -446,7 +446,7 @@
       },
       "powerful": {
         "title": "强大工具",
-        "description": "99+专业PDF工具满足您的所有需求。"
+        "description": "90+专业PDF工具满足您的所有需求。"
       }
     },
     "popularTools": {
@@ -1698,12 +1698,6 @@
       "removeComments": "删除评论",
       "removeHighlights": "删除高亮",
       "removeLinks": "删除链接"
-    },
-    "formFiller": {
-      "uploadLabel": "上传PDF文件",
-      "uploadDescription": "拖放PDF表单到此处。",
-      "saveButton": "保存表单",
-      "successMessage": "表单保存成功！"
     },
     "formCreator": {
       "uploadLabel": "上传PDF文件",

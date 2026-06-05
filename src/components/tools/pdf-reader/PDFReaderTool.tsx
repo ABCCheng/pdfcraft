@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { Download, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 export interface PDFReaderToolProps {
     className?: string;
@@ -17,7 +17,6 @@ export interface PDFReaderToolProps {
  * A simple PDF reader that uses the browser's built-in PDF viewer.
  */
 export function PDFReaderTool({ className = '' }: PDFReaderToolProps) {
-    const t = useTranslations('common');
     const tTools = useTranslations('tools');
 
     const [file, setFile] = useState<File | null>(null);
@@ -55,17 +54,6 @@ export function PDFReaderTool({ className = '' }: PDFReaderToolProps) {
             }
         };
     }, [pdfUrl]);
-
-    const handleDownload = useCallback(() => {
-        if (pdfUrl && file) {
-            const a = document.createElement('a');
-            a.href = pdfUrl;
-            a.download = file.name;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-    }, [pdfUrl, file]);
 
     const handleReset = useCallback(() => {
         if (pdfUrl) {
@@ -105,16 +93,13 @@ export function PDFReaderTool({ className = '' }: PDFReaderToolProps) {
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
                                 <span className="text-sm font-medium text-[hsl(var(--color-foreground))]">
-                                    {file.name}
+                                        {file.name}
                                 </span>
                                 <span className="text-xs text-[hsl(var(--color-muted-foreground))]">
                                     ({(file.size / 1024 / 1024).toFixed(2)} MB)
                                 </span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <Button variant="ghost" size="sm" onClick={handleDownload} title="Download">
-                                    <Download className="w-4 h-4" />
-                                </Button>
                                 <Button variant="ghost" size="sm" onClick={handleReset} title="Close">
                                     <X className="w-4 h-4" />
                                 </Button>

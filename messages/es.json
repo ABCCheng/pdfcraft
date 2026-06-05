@@ -1699,12 +1699,6 @@
       "removeHighlights": "Eliminar Resaltados",
       "removeLinks": "Eliminar Enlaces"
     },
-    "formFiller": {
-      "uploadLabel": "Subir archivo PDF",
-      "uploadDescription": "Arrastre y suelte un formulario PDF.",
-      "saveButton": "Guardar formulario",
-      "successMessage": "¡Formulario guardado exitosamente!"
-    },
     "formCreator": {
       "uploadLabel": "Subir archivo PDF",
       "uploadDescription": "Arrastra y suelta un archivo PDF aquí.",

@@ -615,32 +615,6 @@ export const toolContentZhHant: Record<string, ToolContent> = {
     ],
   },
 
-  'form-filler': {
-    title: '表單填寫',
-    metaDescription: '線上填寫PDF表單。無需列印即可完成互動式PDF表單。',
-    keywords: ['填寫pdf表單', 'pdf表單填寫器', '完成pdf表單', '交互式pdf'],
-    description: `
-      <p>表單填寫允許您直接在瀏覽器中完成互動式PDF表單。填寫文字欄位、勾選核取方塊、選擇選項並新增簽名，無需列印文件。</p>
-      <p>該工具支援標準PDF表單和XFA表單。您填寫的資料可以儲存，表單可以扁平化以防止進一步編輯。</p>
-      <p>所有處理都在您的瀏覽器本地進行，確保您的表單數據保持隱私。</p>
-    `,
-    howToUse: [
-      { step: 1, title: '上傳PDF表單', description: '拖放您的PDF表單或點擊選擇檔案。' },
-      { step: 2, title: '填寫表單', description: '點擊表單欄位輸入文字、勾選核取方塊或選擇選項。' },
-      { step: 3, title: '儲存並下載', description: '點擊儲存保留您的輸入並下載已填寫的表單。' },
-    ],
-    useCases: [
-      { title: '申請表', description: '完成工作申請、許可申請和注冊表單。', icon: 'clipboard' },
-      { title: '稅務表單', description: '電子填寫稅務文件和財務表單。', icon: 'file-text' },
-      { title: '契約', description: '在簽署前用您的信息完成契約表單。', icon: 'file-signature' },
-    ],
-    faq: [
-      { question: '可以儲存進度嗎？', answer: '是的，您可以儲存部分填寫的表單並稍後繼續。' },
-      { question: '什麼是表單扁平化？', answer: '扁平化將表單欄位轉換為靜態內容，防止進一步編輯。' },
-      { question: '支援XFA表單嗎？', answer: '是的，該工具支援標準AcroForms和XFA表單。' },
-    ],
-  },
-
   'form-creator': {
     title: '表單創建',
     metaDescription: '建立可填寫的PDF表單。新增文字欄位、核取方塊和下拉選單到檔案。',

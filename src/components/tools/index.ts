@@ -48,7 +48,6 @@ export { SignPDFTool, type SignPDFToolProps } from './sign';
 export { StampsTool, type StampsToolProps } from './stamps';
 export { RemoveAnnotationsTool, type RemoveAnnotationsToolProps } from './remove-annotations';
 export { CropPDFTool, type CropPDFToolProps } from './crop';
-export { FormFillerTool, type FormFillerToolProps } from './form-filler';
 export { FormCreatorTool, type FormCreatorToolProps } from './form-creator';
 export { RemoveBlankPagesTool, type RemoveBlankPagesToolProps } from './remove-blank-pages';
 

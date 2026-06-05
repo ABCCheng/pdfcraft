@@ -1699,12 +1699,6 @@
       "removeHighlights": "Supprimer les Surlignages",
       "removeLinks": "Supprimer les Liens"
     },
-    "formFiller": {
-      "uploadLabel": "Télécharger le fichier PDF",
-      "uploadDescription": "Faites glisser et déposez un formulaire PDF.",
-      "saveButton": "Enregistrer le formulaire",
-      "successMessage": "Formulaire enregistré avec succès !"
-    },
     "formCreator": {
       "uploadLabel": "Télécharger un fichier PDF",
       "uploadDescription": "Glissez-déposez un fichier PDF ici.",

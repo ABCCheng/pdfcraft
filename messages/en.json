@@ -6,7 +6,7 @@
     },
     "tools": {
       "title": "All PDF Tools",
-      "description": "Browse all 99+ professional PDF tools. Merge, split, compress, convert, edit, and secure your PDF files for free."
+      "description": "Browse all 90+ professional PDF tools. Merge, split, compress, convert, edit, and secure your PDF files for free."
     },
     "about": {
       "title": "About",
@@ -228,7 +228,7 @@
       "features": {
         "operations": {
           "question": "What PDF operations can I perform?",
-          "answer": "PDFCraft offers 99+ tools including: merge, split, compress, convert (to/from images, text, JSON), edit, annotate, sign, add watermarks, encrypt/decrypt, OCR, and many more."
+          "answer": "PDFCraft offers 90+ tools including: merge, split, compress, convert (to/from images, text, JSON), edit, annotate, sign, add watermarks, encrypt/decrypt, OCR, and many more."
         },
         "merge": {
           "question": "Can I merge multiple PDF files?",
@@ -446,7 +446,7 @@
       },
       "powerful": {
         "title": "Powerful Tools",
-        "description": "99+ professional PDF tools for all your needs."
+        "description": "90+ professional PDF tools for all your needs."
       }
     },
     "popularTools": {
@@ -1698,12 +1698,6 @@
       "removeComments": "Remove Comments",
       "removeHighlights": "Remove Highlights",
       "removeLinks": "Remove Links"
-    },
-    "formFiller": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF form.",
-      "saveButton": "Save Form",
-      "successMessage": "Form saved successfully!"
     },
     "formCreator": {
       "uploadLabel": "Upload PDF File",

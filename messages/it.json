@@ -1699,12 +1699,6 @@
       "removeHighlights": "Rimuovi evidenziazioni",
       "removeLinks": "Rimuovi collegamenti"
     },
-    "formFiller": {
-      "uploadLabel": "Carica file PDF",
-      "uploadDescription": "Trascina e rilascia un modulo PDF.",
-      "saveButton": "Salva modulo",
-      "successMessage": "Modulo salvato con successo!"
-    },
     "formCreator": {
       "uploadLabel": "Carica file PDF",
       "uploadDescription": "Trascina e rilascia un file PDF qui.",

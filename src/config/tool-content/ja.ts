@@ -523,28 +523,6 @@ export const toolContentJa: Record<string, ToolContent> = {
     ],
   },
 
-  'form-filler': {
-    title: 'フォーム記入',
-    metaDescription: 'オンラインでPDFフォームに記入。印刷せずにインタラクティブなPDFフォームを完成。',
-    keywords: ['pdfフォーム記入', 'pdfフォームフィラー', 'pdfフォーム完成', 'インタラクティブpdf'],
-    description: '<p>ブラウザで直接インタラクティブなPDFフォームに記入できます。ドキュメントを印刷せずに、テキストフィールドに記入、チェックボックスをチェック、オプションを選択、署名を追加できます。</p>',
-    howToUse: [
-      { step: 1, title: 'PDFフォームをアップロード', description: 'PDFフォームをドラッグ＆ドロップするか、クリックしてファイルを選択します。' },
-      { step: 2, title: 'フォームに記入', description: 'フォームフィールドをクリックしてテキストを入力、チェックボックスをチェック、オプションを選択します。' },
-      { step: 3, title: '保存してダウンロード', description: '保存をクリックして入力を保存し、記入済みフォームをダウンロードします。' },
-    ],
-    useCases: [
-      { title: '申請フォーム', description: '求人申請、許可申請、登録フォームに記入します。', icon: 'clipboard' },
-      { title: '税務フォーム', description: '税務書類や財務フォームに電子的に記入します。', icon: 'file-text' },
-      { title: '契約書', description: '署名前に契約フォームに情報を記入します。', icon: 'file-signature' },
-    ],
-    faq: [
-      { question: '進捗を保存できますか？', answer: 'はい、部分的に記入したフォームを保存して後で続けることができます。' },
-      { question: 'フォームのフラット化とは何ですか？', answer: 'フラット化はフォームフィールドを静的コンテンツに変換し、さらなる編集を防ぎます。' },
-      { question: 'XFAフォームはサポートされていますか？', answer: 'はい、ツールは標準のAcroFormsとXFAフォームの両方をサポートしています。' },
-    ],
-  },
-
   'form-creator': {
     title: 'フォーム作成',
     metaDescription: '記入可能なPDFフォームを作成。テキストフィールド、チェックボックス、ドロップダウンをドキュメントに追加。',

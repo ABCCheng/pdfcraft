@@ -624,30 +624,6 @@ export const toolContentDe: Record<string, ToolContent> = {
   },
 
   // ==================== FORM TOOLS ====================
-  'form-filler': {
-    title: 'Formular-Ausfüller',
-    metaDescription: 'PDF-Formulare online ausfüllen. Bearbeiten Sie interaktive Formulare direkt im Browser.',
-    keywords: ['pdf formular ausfüllen', 'pdf form filler', 'interaktives pdf bearbeiten'],
-    description: `
-      <p>Füllen Sie interaktive PDF-Formulare direkt im Browser aus. Geben Sie Text ein, setzen Sie Häkchen in Checkboxen und wählen Sie Optionen aus Dropdown-Menüs – ganz ohne Drucken.</p>
-    `,
-    howToUse: [
-      { step: 1, title: 'Formular hochladen', description: 'Wählen Sie die PDF-Formulardatei aus.' },
-      { step: 2, title: 'Ausfüllen', description: 'Klicken Sie in die Felder und geben Sie Ihre Daten ein.' },
-      { step: 3, title: 'Speichern', description: 'Laden Sie das fertig ausgefüllte Formular herunter.' },
-    ],
-    useCases: [
-      { title: 'Anträge & Behörden', description: 'Füllen Sie Anmeldeformulare oder Anträge digital aus.', icon: 'clipboard' },
-      { title: 'Steuerformulare', description: 'Bearbeiten Sie Finanzdokumente bequem am Rechner.', icon: 'file-text' },
-      { title: 'Vertragsdaten', description: 'Ergänzen Sie Ihre persönlichen Daten in Vertragsentwürfen.', icon: 'file-signature' },
-    ],
-    faq: [
-      { question: 'Kann ich den Fortschritt speichern?', answer: 'Ja, Sie können das teilweise ausgefüllte Formular speichern und später weiterbearbeiten.' },
-      { question: 'Was ist "Flattening"?', answer: 'Dabei werden die Felder in statischen Text umgewandelt, damit sie nach dem Versand nicht mehr geändert werden können.' },
-      { question: 'Werden XFA-Formulare unterstützt?', answer: 'Ja, das Tool unterstützt sowohl Standard-AcroForms als auch XFA-Formate.' },
-    ],
-  },
-
   'form-creator': {
     title: 'Formular-Ersteller',
     metaDescription: 'Erstellen Sie ausfüllbare PDF-Formulare. Fügen Sie Textfelder, Checkboxen und Dropdowns hinzu.',

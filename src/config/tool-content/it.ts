@@ -573,30 +573,6 @@ export const toolContentIt: Record<string, ToolContent> = {
     ],
   },
 
-  'form-filler': {
-    title: 'Compilatore di moduli',
-    metaDescription: 'Compila moduli PDF online. Completa moduli PDF interattivi senza stamparli.',
-    keywords: ['compilare il modulo pdf', 'compilatore di moduli pdf', 'modulo pdf completo', 'pdf interattivo'],
-    description: `<p>Form Filler ti consente di completare moduli PDF interattivi direttamente nel tuo browser. Compila i campi di testo, seleziona le caselle, seleziona le opzioni e aggiungi firme senza stampare il documento.</p>
-      <p>Lo strumento supporta moduli PDF standard e moduli XFA. I dati compilati possono essere salvati e il modulo può essere appiattito per impedire ulteriori modifiche.</p>
-      <p>Tutta l'elaborazione avviene localmente nel tuo browser, garantendo che i dati del modulo rimangano privati.</p>`,
-    howToUse: [
-      { step: 1, title: 'Carica il tuo modulo PDF', description: 'Trascina e rilascia il modulo PDF o fai clic per selezionare il file.' },
-      { step: 2, title: 'Compila il modulo', description: 'Fare clic sui campi del modulo per inserire testo, selezionare caselle o selezionare opzioni.' },
-      { step: 3, title: 'Salva e scarica', description: 'Fare clic su Salva per conservare le voci e scaricare il modulo compilato.' },
-    ],
-    useCases: [
-      { title: 'Moduli di domanda', description: 'Completare domande di lavoro, domande di permesso e moduli di registrazione.', icon: 'clipboard' },
-      { title: 'Moduli fiscali', description: 'Compila elettronicamente documenti fiscali e moduli finanziari.', icon: 'file-text' },
-      { title: 'Contratti', description: 'Completa i moduli contrattuali con le tue informazioni prima di firmare.', icon: 'file-signature' },
-    ],
-    faq: [
-      { question: 'Posso salvare i miei progressi?', answer: 'Sì, puoi salvare i moduli parzialmente compilati e continuare in seguito.' },
-      { question: 'Cos\'è l\'appiattimento della forma?', answer: 'L\'appiattimento converte i campi del modulo in contenuto statico, impedendo ulteriori modifiche.' },
-      { question: 'Sono supportati i moduli XFA?', answer: 'Sì, lo strumento supporta sia i moduli AcroForms standard che quelli XFA.' },
-    ],
-  },
-
   'form-creator': {
     title: 'Creatore di moduli',
     metaDescription: 'Crea moduli PDF compilabili. Aggiungi campi di testo, caselle di controllo e menu a discesa ai documenti.',

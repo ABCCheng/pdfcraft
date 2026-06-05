@@ -43,7 +43,6 @@ import { InvertColorsTool } from '@/components/tools/invert-colors';
 import { BackgroundColorTool } from '@/components/tools/background-color';
 import { StampsTool } from '@/components/tools/stamps';
 import { RemoveAnnotationsTool } from '@/components/tools/remove-annotations';
-import { FormFillerTool } from '@/components/tools/form-filler';
 import { FormCreatorTool } from '@/components/tools/form-creator';
 import { RemoveBlankPagesTool } from '@/components/tools/remove-blank-pages';
 import { PDFToImageTool } from '@/components/tools/pdf-to-image';
@@ -315,8 +314,6 @@ export default async function ToolPageRoute({ params }: ToolPageParams) {
         return <StampsTool />;
       case 'remove-annotations':
         return <RemoveAnnotationsTool />;
-      case 'form-filler':
-        return <FormFillerTool />;
       case 'form-creator':
         return <FormCreatorTool />;
       case 'remove-blank-pages':

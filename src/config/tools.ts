@@ -80,7 +80,7 @@ export const tools: Tool[] = [
     maxFileSize: DEFAULT_MAX_FILE_SIZE,
     maxFiles: 1,
     features: ['annotate', 'highlight', 'redact', 'comment', 'shapes', 'images', 'search'],
-    relatedTools: ['sign-pdf', 'add-watermark', 'form-filler'],
+    relatedTools: ['sign-pdf', 'add-watermark', 'add-stamps'],
   },
   {
     id: 'jpg-to-pdf',
@@ -104,7 +104,7 @@ export const tools: Tool[] = [
     maxFileSize: DEFAULT_MAX_FILE_SIZE,
     maxFiles: 1,
     features: ['draw-signature', 'type-signature', 'upload-signature', 'multiple-signatures'],
-    relatedTools: ['edit-pdf', 'form-filler', 'add-stamps'],
+    relatedTools: ['edit-pdf', 'add-stamps', 'digital-sign'],
   },
   {
     id: 'crop-pdf',
@@ -278,18 +278,6 @@ export const tools: Tool[] = [
     relatedTools: ['edit-pdf', 'flatten-pdf', 'sanitize-pdf'],
   },
   {
-    id: 'form-filler',
-    slug: 'form-filler',
-    icon: 'square-pen',
-    category: 'edit-annotate',
-    acceptedFormats: ['.pdf'],
-    outputFormat: 'pdf',
-    maxFileSize: DEFAULT_MAX_FILE_SIZE,
-    maxFiles: 1,
-    features: ['fill-forms', 'xfa-support', 'save-data', 'flatten-after'],
-    relatedTools: ['form-creator', 'sign-pdf', 'edit-pdf'],
-  },
-  {
     id: 'form-creator',
     slug: 'form-creator',
     icon: 'file-input',
@@ -299,7 +287,7 @@ export const tools: Tool[] = [
     maxFileSize: DEFAULT_MAX_FILE_SIZE,
     maxFiles: 1,
     features: ['text-fields', 'checkboxes', 'dropdowns', 'drag-drop'],
-    relatedTools: ['form-filler', 'edit-pdf', 'sign-pdf'],
+    relatedTools: ['edit-pdf', 'sign-pdf', 'flatten-pdf'],
   },
   {
     id: 'remove-blank-pages',
@@ -1045,7 +1033,7 @@ export const tools: Tool[] = [
     maxFileSize: DEFAULT_MAX_FILE_SIZE,
     maxFiles: 10,
     features: ['flatten-forms', 'flatten-annotations', 'non-editable'],
-    relatedTools: ['sanitize-pdf', 'remove-annotations', 'form-filler'],
+    relatedTools: ['sanitize-pdf', 'remove-annotations', 'edit-pdf'],
   },
   {
     id: 'remove-metadata',
@@ -1226,8 +1214,8 @@ export const tools: Tool[] = [
     outputFormat: 'view',
     maxFileSize: DEFAULT_MAX_FILE_SIZE,
     maxFiles: 1,
-    features: ['page-navigation', 'zoom', 'rotate', 'fullscreen', 'print', 'download'],
-    relatedTools: ['sign-pdf', 'annotate-pdf'],
+    features: ['page-navigation', 'zoom', 'print', 'read-only'],
+    relatedTools: ['edit-pdf', 'sign-pdf', 'digital-sign'],
   },
 ];
 

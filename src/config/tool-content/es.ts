@@ -527,28 +527,6 @@ export const toolContentEs: Record<string, ToolContent> = {
     ],
   },
 
-  'form-filler': {
-    title: 'Rellenar Formularios',
-    metaDescription: 'Rellena formularios PDF interactivos en línea.',
-    keywords: ['rellenar formularios pdf', 'completar pdf', 'formularios interactivos'],
-    description: '<p>Rellenar Formularios te permite completar formularios PDF interactivos directamente en tu navegador.</p><p>Procesamiento local.</p>',
-    howToUse: [
-      { step: 1, title: 'Sube tu PDF', description: 'Arrastra y suelta o selecciona el formulario.' },
-      { step: 2, title: 'Completa Campos', description: 'Rellena los campos del formulario.' },
-      { step: 3, title: 'Guarda y Descarga', description: 'Guarda el formulario completado.' },
-    ],
-    useCases: [
-      { title: 'Formularios Oficiales', description: 'Completa formularios gubernamentales o legales.', icon: 'file-text' },
-      { title: 'Solicitudes', description: 'Rellena solicitudes de empleo o servicios.', icon: 'clipboard' },
-      { title: 'Contratos', description: 'Completa contratos y acuerdos.', icon: 'file-signature' },
-    ],
-    faq: [
-      { question: '¿Funciona con todos los formularios?', answer: 'Funciona con formularios PDF interactivos estándar.' },
-      { question: '¿Puedo guardar y continuar después?', answer: 'Sí, guarda el progreso y continúa más tarde.' },
-      { question: '¿Puedo añadir firma?', answer: 'Sí, usa la herramienta Firmar PDF para añadir firmas.' },
-    ],
-  },
-
   'form-creator': {
     title: 'Crear Formularios',
     metaDescription: 'Crea formularios PDF interactivos con campos rellenables.',

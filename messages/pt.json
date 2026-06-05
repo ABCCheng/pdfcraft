@@ -1699,12 +1699,6 @@
       "removeHighlights": "Remover Destaques",
       "removeLinks": "Remover Links"
     },
-    "formFiller": {
-      "uploadLabel": "Enviar arquivo PDF",
-      "uploadDescription": "Arraste e solte um formulário PDF.",
-      "saveButton": "Salvar formulário",
-      "successMessage": "Formulário salvo com sucesso!"
-    },
     "formCreator": {
       "uploadLabel": "Enviar arquivo PDF",
       "uploadDescription": "Arraste e solte um arquivo PDF aqui.",

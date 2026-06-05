@@ -1699,12 +1699,6 @@
       "removeHighlights": "하이라이트 제거",
       "removeLinks": "링크 제거"
     },
-    "formFiller": {
-      "uploadLabel": "PDF 파일 업로드",
-      "uploadDescription": "PDF 양식을 끌어다 놓습니다.",
-      "saveButton": "양식 저장",
-      "successMessage": "양식이 저장되었습니다!"
-    },
     "formCreator": {
       "uploadLabel": "PDF 파일 업로드",
       "uploadDescription": "PDF 파일을 여기에 드래그 앤 드롭하세요.",
