@@ -16,6 +16,47 @@ interface ContactPageClientProps {
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
+const FEEDBACK_API_URL = 'https://io.effortgo.xyz/api/commonfeedback';
+const MESSAGE_MAX_LENGTH = 1000;
+
+interface ApiResponse<T> {
+  code: number;
+  message: string;
+  data: T;
+}
+
+function normalizeEmail(email: string) {
+  return email.toLowerCase().trim();
+}
+
+async function post<T>(url: string, body: unknown): Promise<T> {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Request failed with status ${response.status}`);
+  }
+
+  return response.json() as Promise<T>;
+}
+
+async function feedback(userName: string, userEmail: string, subject: string, message: string) {
+  const normalizedEmail = normalizeEmail(userEmail);
+
+  return post<ApiResponse<void>>(FEEDBACK_API_URL, {
+    appName: 'pdfcraft',
+    userName,
+    userEmail: normalizedEmail,
+    subject,
+    message,
+  });
+}
+
 export default function ContactPageClient({ locale }: ContactPageClientProps) {
   const t = useTranslations('contactPage');
   const tCommon = useTranslations('common');
@@ -53,12 +94,19 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
     e.preventDefault();
     setFormStatus('submitting');
 
-    // Simulate form submission (in a real app, this would send to an API)
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const result = await feedback(formData.name, formData.email, formData.subject, formData.message);
 
-    // For demo purposes, always succeed
-    setFormStatus('success');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+      if (result.code !== 0 && result.code !== 200) {
+        throw new Error(result.message || 'Feedback submission failed');
+      }
+
+      setFormStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Failed to send feedback:', error);
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -222,10 +270,14 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
                         value={formData.message}
                         onChange={handleInputChange}
                         required
+                        maxLength={MESSAGE_MAX_LENGTH}
                         rows={6}
                         className="w-full px-4 py-2 rounded-lg border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-ring))] resize-none"
                         placeholder={t('form.fields.message.placeholder')}
                       />
+                      <div className="mt-1 text-right text-xs text-[hsl(var(--color-muted-foreground))]">
+                        {formData.message.length}/{MESSAGE_MAX_LENGTH}
+                      </div>
                     </div>
 
                     {formStatus === 'error' && (
@@ -281,4 +333,3 @@ export default function ContactPageClient({ locale }: ContactPageClientProps) {
     </div>
   );
 }
-
