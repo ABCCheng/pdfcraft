@@ -16,7 +16,7 @@ interface ContactPageClientProps {
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
-const FEEDBACK_API_URL = 'https://io.effortgo.xyz/api/commonfeedback';
+const FEEDBACK_API_URL = 'https://io.effortgo.xyz/api/common/feedback';
 const MESSAGE_MAX_LENGTH = 1000;
 
 interface ApiResponse<T> {
