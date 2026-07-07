@@ -121,14 +121,6 @@ export interface WebSiteSchema {
   name: string;
   url: string;
   description: string;
-  potentialAction?: {
-    '@type': 'SearchAction';
-    target: {
-      '@type': 'EntryPoint';
-      urlTemplate: string;
-    };
-    'query-input': string;
-  };
 }
 
 /**
@@ -309,14 +301,6 @@ export function generateWebSiteSchema(locale: Locale): WebSiteSchema {
     name: siteConfig.name,
     url: getCanonicalUrl(locale),
     description: siteConfig.description,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${getCanonicalUrl(locale)}?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
   };
 }
 
