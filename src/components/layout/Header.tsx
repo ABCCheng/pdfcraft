@@ -49,12 +49,18 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
               aria-label="EffortGo"
               title="EffortGo"
             >
-              <Image
-                src="/logo-effortgo.svg"
-                alt=""
-                width={20}
-                height={20}
-                className="h-5 w-5 object-contain grayscale opacity-75 transition-opacity group-hover:opacity-100 dark:invert"
+              <span
+                className="h-5 w-5 bg-[hsl(var(--color-muted-foreground))] transition-colors group-hover:bg-[hsl(var(--color-foreground))]"
+                style={{
+                  maskImage: "url('/logo-effortgo.svg')",
+                  WebkitMaskImage: "url('/logo-effortgo.svg')",
+                  maskPosition: 'center',
+                  WebkitMaskPosition: 'center',
+                  maskRepeat: 'no-repeat',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskSize: 'contain',
+                  WebkitMaskSize: 'contain',
+                }}
                 aria-hidden="true"
               />
             </a>
