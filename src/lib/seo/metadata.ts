@@ -111,7 +111,13 @@ export function generateBaseMetadata(options: PageMetadataOptions): Metadata {
     icons: {
       icon: '/favicon.svg',
       shortcut: '/favicon.svg',
-      apple: '/favicon.svg',
+      apple: [
+        {
+          url: '/apple-touch-icon.png',
+          sizes: '180x180',
+          type: 'image/png',
+        },
+      ],
     },
     alternates: {
       canonical: canonicalUrl,
