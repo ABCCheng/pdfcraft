@@ -151,7 +151,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ currentLocal
         aria-expanded={isOpen}
         aria-haspopup="listbox"
         aria-label={t('selectLanguage')}
-        className="flex items-center gap-1.5"
+        className="flex cursor-pointer items-center gap-1.5 transition-all hover:scale-105"
       >
         <Globe className="h-4 w-4" aria-hidden="true" />
         {/* <span className="hidden sm:inline text-sm">{currentConfig.nativeName}</span> */}

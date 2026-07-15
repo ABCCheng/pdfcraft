@@ -32,7 +32,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="flex items-center justify-center h-9 w-9 rounded-lg text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))] hover:bg-[hsl(var(--color-muted))/0.5] transition-all"
+      className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg text-[hsl(var(--color-muted-foreground))] transition-all hover:scale-105 hover:bg-[hsl(var(--color-muted))/0.5] hover:text-[hsl(var(--color-foreground))]"
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
       title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >

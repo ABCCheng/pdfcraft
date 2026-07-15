@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Github, Mail } from 'lucide-react';
 import { type Locale } from '@/lib/i18n/config';
@@ -41,20 +42,14 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
               className="group flex items-center gap-2 text-lg font-bold text-[hsl(var(--color-foreground))]"
               aria-label={`${t('brand')} - ${t('navigation.home')}`}
             >
-              <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-[hsl(var(--color-primary))] text-white transition-transform group-hover:scale-105">
-                <svg
-                  className="h-4 w-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                  <polyline points="14 2 14 8 20 8" />
-                </svg>
-              </div>
+              <Image
+                src="/favicon.svg"
+                alt=""
+                width={32}
+                height={32}
+                className="h-8 w-8 rounded-lg object-contain transition-transform group-hover:scale-105"
+                aria-hidden="true"
+              />
 
               <span data-testid="footer-brand-name">
                 {t('brand')}
@@ -86,7 +81,7 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
 
             <div className="flex items-center">
               <p className="text-sm text-[hsl(var(--color-muted-foreground))] pr-1">
-                © {currentYear} EffortGo. Powered by {t('brand')}.
+                © {currentYear} ABCCheng. Powered by {t('brand')}.
               </p>
 
               <a
