@@ -45,9 +45,9 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
               href="https://www.effortgo.xyz"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg text-[hsl(var(--color-muted-foreground))] transition-all hover:scale-105 hover:bg-[hsl(var(--color-muted))/0.5] hover:text-[hsl(var(--color-foreground))]"
-              aria-label="EffortGo"
-              title="EffortGo"
+              className="group flex h-9 items-center justify-center gap-1.5 rounded-lg px-2 text-[hsl(var(--color-muted-foreground))] transition-all hover:scale-105 hover:bg-[hsl(var(--color-muted))/0.5] hover:text-[hsl(var(--color-foreground))]"
+              aria-label="EffortGo official website"
+              title="EffortGo official website"
             >
               <span
                 className="h-5 w-5 bg-[hsl(var(--color-muted-foreground))] transition-colors group-hover:bg-[hsl(var(--color-foreground))]"
@@ -63,6 +63,7 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
                 }}
                 aria-hidden="true"
               />
+              <span className="text-sm font-medium">EffortGo</span>
             </a>
             <ThemeToggle />
             <LanguageSelector currentLocale={locale} />
