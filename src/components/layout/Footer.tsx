@@ -81,7 +81,7 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
 
             <div className="flex items-center">
               <p className="text-sm text-[hsl(var(--color-muted-foreground))] pr-1">
-                © {currentYear} ABCCheng. Powered by {t('brand')}.
+                © {currentYear} EffortGo. Powered by {t('brand')}.
               </p>
 
               <a

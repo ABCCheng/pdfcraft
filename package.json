@@ -1,6 +1,6 @@
 {
   "name": "pdfcraft",
-  "version": "2.2.8",
+  "version": "2.2.9",
   "private": true,
   "type": "module",
   "packageManager": "yarn@1.22.22",
